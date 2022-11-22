@@ -1,0 +1,6 @@
+/.idea/
+/.gradle/
+# Project exclude paths
+/bucket-bootstrap/build/
+/bucket-bootstrap/build/classes/java/main/
+/build/

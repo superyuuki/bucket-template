@@ -1,0 +1,29 @@
+plugins {
+    id "java"
+    id "edu.wpi.first.GradleRIO" version "2022.4.1"
+}
+
+group 'org.bitbuckets'
+version '1.0-SNAPSHOT'
+
+def wpirepo = wpi.getMaven().collect().collect {it.release}
+def wpilib = wpi.java.deps.wpilib();
+def vendorlib = wpi.java.vendor.java();
+
+//feeds java and wpilib plugin into all subprojects so they can access code
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'edu.wpi.first.GradleRIO'
+
+    repositories {
+        mavenCentral()
+
+        wpirepo.forEach(str -> {
+            maven { url(str) }
+        })
+    }
+
+    dependencies {
+        implementation wpilib, vendorlib
+    }
+}

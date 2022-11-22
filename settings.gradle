@@ -1,0 +1,3 @@
+rootProject.name = 'season-template'
+include 'bucket-bootstrap'
+
