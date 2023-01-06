@@ -6,24 +6,32 @@ plugins {
 group 'org.bitbuckets'
 version '1.0-SNAPSHOT'
 
-def wpirepo = wpi.getMaven().collect().collect {it.release}
-def wpilib = wpi.java.deps.wpilib();
-def vendorlib = wpi.java.vendor.java();
+def wpilibArtifacts = wpi.java.deps.wpilib(); //generates maven artifacts from wpilib
+def vendorArtifacts = wpi.java.vendor.java(); //generates maven artifacts from vendor dep files
 
-//feeds java and wpilib plugin into all subprojects so they can access code
-subprojects {
+subprojects { //feeds java and wpilib plugin into all subprojects so they can access code
     apply plugin: 'java'
-    apply plugin: 'edu.wpi.first.GradleRIO'
 
+    //defines repositories for all subprojects
     repositories {
         mavenCentral()
-
-        wpirepo.forEach(str -> {
-            maven { url(str) }
-        })
+        maven { url 'https://repo.superyuuki.com/snapshots' }
+        maven { url 'https://frcmaven.wpi.edu/artifactory/release' }
+        maven { url 'https://frcmaven.wpi.edu/artifactory/vendor-mvn-release' } //vendordep cache in case my shitcode fails to work
     }
 
-    dependencies {
-        implementation wpilib, vendorlib
+    dependencies { //defines dependencies for all subprojects
+        implementation wpilibArtifacts
+        implementation vendorArtifacts
+
+        implementation 'shiv:shiv-api:1.0.0-SNAPSHOT'
+        testImplementation 'junit:junit:4.12'
     }
 }
+
+
+//backup code to download vendor deps in case wpi's cache doesn't have them, put this in repositories
+/*vendorDepsRepos.forEach(str -> {
+    maven { url(str) }
+})*/
+
