@@ -4,4 +4,5 @@ include 'bucket-lib'
 include 'bucket-drive'
 include 'bucket-shared'
 include 'bucket-odometry'
+include 'bucket-vision'
 

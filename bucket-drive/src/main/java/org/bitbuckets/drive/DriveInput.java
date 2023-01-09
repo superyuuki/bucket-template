@@ -5,7 +5,7 @@ import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.wpilibj.Joystick;
 import org.bitbuckets.lib.Xbox;
 
-class DriveInput {
+public class DriveInput {
 
     final SlewRateLimiter x = new SlewRateLimiter(2);
     final SlewRateLimiter y = new SlewRateLimiter(2);

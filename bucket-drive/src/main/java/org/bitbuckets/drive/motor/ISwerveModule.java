@@ -1,11 +1,16 @@
 package org.bitbuckets.drive.motor;
 
+import edu.wpi.first.math.geometry.Rotation2d;
+
 public interface ISwerveModule {
 
-    void setDriveVoltage(double volt);
-    void setTurnVoltage(double volt);
+    double queryCurrentVelocityMetersPerSecond();
+    double queryCurrentAngVelocityRadiansPerSecond();
 
-    double queryCurrentDriveVoltage();
-    double queryCurrentTurnVoltage();
+    Rotation2d queryCurrentRotation();
+
+
+
+    void commandSetpointValues(double velocity, Rotation2d rotation2d);
 
 }

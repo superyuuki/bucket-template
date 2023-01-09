@@ -1,6 +1,6 @@
 plugins {
     id "java"
-    id "edu.wpi.first.GradleRIO" version "2022.4.1"
+    id "edu.wpi.first.GradleRIO" version "2023.1.1"
 }
 
 group 'org.bitbuckets'
@@ -8,6 +8,7 @@ version '1.0-SNAPSHOT'
 
 def wpilibArtifacts = wpi.java.deps.wpilib(); //generates maven artifacts from wpilib
 def vendorArtifacts = wpi.java.vendor.java(); //generates maven artifacts from vendor dep files
+def vendorDepsRepos = wpi.getMaven().collect {it.toString()}
 
 subprojects { //feeds java and wpilib plugin into all subprojects so they can access code
     apply plugin: 'java'
@@ -17,7 +18,15 @@ subprojects { //feeds java and wpilib plugin into all subprojects so they can ac
         mavenCentral()
         maven { url 'https://repo.superyuuki.com/snapshots' }
         maven { url 'https://frcmaven.wpi.edu/artifactory/release' }
-        maven { url 'https://frcmaven.wpi.edu/artifactory/vendor-mvn-release' } //vendordep cache in case my shitcode fails to work
+        maven { url 'https://frcmaven.wpi.edu/artifactory/vendor-mvn-release' }
+        maven { url 'https://maven.photonvision.org/repository/internal' }
+        maven { url 'https://jitpack.io' }
+        //vendordep cache in case my shitcode fails to work
+/*
+        vendorDepsRepos.forEach(str -> {
+            maven { url(str) }
+        });*/
+
     }
 
     dependencies { //defines dependencies for all subprojects
@@ -31,7 +40,5 @@ subprojects { //feeds java and wpilib plugin into all subprojects so they can ac
 
 
 //backup code to download vendor deps in case wpi's cache doesn't have them, put this in repositories
-/*vendorDepsRepos.forEach(str -> {
-    maven { url(str) }
-})*/
+
 

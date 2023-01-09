@@ -1,6 +1,7 @@
 package org.bitbuckets.drive;
 
 import com.swervedrivespecialties.swervelib.Mk4SwerveModuleHelper;
+import com.swervedrivespecialties.swervelib.SdsModuleConfigurations;
 import com.swervedrivespecialties.swervelib.SwerveModule;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -25,7 +26,7 @@ public interface DriveConstants {
     double DRIVE_REDUCTION = (14.0 / 50.0) * (27.0 / 17.0) * (15.0 / 45.0);
     double DRIVE_GEARING = 1 / DRIVE_REDUCTION;
 
-    double ROTATION_REDUCTION = (15.0 / 32.0) * (10.0 / 60.0);
+    double ROTATION_REDUCTION = (14.0 / 50.0) * (10.0 / 60.0);
     double ROTATION_GEARING = 1 / ROTATION_REDUCTION;
 
     SimpleMotorFeedforward FF = new SimpleMotorFeedforward(0.65292, 2.3053, 0.37626); //converts velocity to voltage
