@@ -1,6 +1,6 @@
-package org.bitbuckets.lib;
+package org.bitbuckets.lib.process;
 
-public interface ISystem {
+public interface ILoop {
 
     void startup();
     void teleop(long delta);

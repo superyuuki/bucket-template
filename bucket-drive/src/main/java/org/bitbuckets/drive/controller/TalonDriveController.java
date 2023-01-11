@@ -1,13 +1,6 @@
 package org.bitbuckets.drive.controller;
 
-import com.swervedrivespecialties.swervelib.SwerveModule;
-import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.kinematics.SwerveModuleState;
-import org.bitbuckets.drive.DriveConstants;
-import org.bitbuckets.drive.IDriveController;
-
-//done
+/*
 public class TalonDriveController implements IDriveController {
 
     final SwerveModule[] swerve;
@@ -43,3 +36,4 @@ public class TalonDriveController implements IDriveController {
 
 
 }
+*/
