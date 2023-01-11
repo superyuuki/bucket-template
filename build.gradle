@@ -21,6 +21,7 @@ subprojects { //feeds java and wpilib plugin into all subprojects so they can ac
         maven { url 'https://maven.photonvision.org/repository/internal' }
         maven { url 'https://maven.revrobotics.com/' }
         maven { url 'https://jitpack.io' }
+        maven { url 'https://maven.ctr-electronics.com/release/' }
         //vendordep cache in case my shitcode fails to work
 /*
         vendorDepsRepos.forEach(str -> {

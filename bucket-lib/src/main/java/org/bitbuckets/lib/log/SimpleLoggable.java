@@ -1,4 +1,4 @@
-package org.bitbuckets.lib;
+package org.bitbuckets.lib.log;
 
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;

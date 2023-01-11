@@ -39,6 +39,8 @@ public class FirstRoutine implements IBehaviorRoutine {
 
         lastIteration = iteration;
 
+        return null;
+
     }
 
     void reset() {
