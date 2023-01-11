@@ -1,13 +1,13 @@
 package org.bitbuckets.lib.behavior;
 
-import org.bitbuckets.lib.IBehaviorNode;
+import org.bitbuckets.lib.IBehaviorRoutine;
 
-public class FirstNode implements IBehaviorNode {
+public class FirstRoutine implements IBehaviorRoutine {
 
-    final IBehaviorNode[] possibleBehaviors;
+    final IBehaviorRoutine[] possibleBehaviors;
     final boolean[] failureFlags;
 
-    public FirstNode(IBehaviorNode[] possibleBehaviors) {
+    public FirstRoutine(IBehaviorRoutine[] possibleBehaviors) {
         this.possibleBehaviors = possibleBehaviors;
         this.failureFlags = new boolean[possibleBehaviors.length];
         this.lastIteration = 0;
@@ -17,7 +17,7 @@ public class FirstNode implements IBehaviorNode {
 
 
     @Override
-    public Status process(int iteration) {
+    public Status processTick(int iteration) {
 
         if (iteration - lastIteration > 1) {
             //reset
@@ -25,7 +25,7 @@ public class FirstNode implements IBehaviorNode {
 
         for (int i = 0; i < possibleBehaviors.length; i++) {
             if (!failureFlags[i]) {
-                Status subnodeStatus = possibleBehaviors[i].process(iteration);
+                Status subnodeStatus = possibleBehaviors[i].processTick(iteration);
 
                 if (subnodeStatus == Status.FAILED) {
                     failureFlags[i] = true;

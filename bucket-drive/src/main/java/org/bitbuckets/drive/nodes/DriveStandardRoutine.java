@@ -7,15 +7,15 @@ import org.bitbuckets.drive.DriveConstants;
 import org.bitbuckets.drive.DriveInput;
 import org.bitbuckets.drive.IDriveController;
 import org.bitbuckets.drive.IOdometryController;
-import org.bitbuckets.lib.IBehaviorNode;
+import org.bitbuckets.lib.IBehaviorRoutine;
 
-public class DriveStandardNode implements IBehaviorNode {
+public class DriveStandardRoutine implements IBehaviorRoutine {
 
     final DriveInput input;
     final IDriveController driveController;
     final IOdometryController odometryController;
 
-    public DriveStandardNode(DriveInput input, IDriveController driveController, IOdometryController odometryController) {
+    public DriveStandardRoutine(DriveInput input, IDriveController driveController, IOdometryController odometryController) {
         this.input = input;
         this.driveController = driveController;
         this.odometryController = odometryController;
@@ -23,7 +23,7 @@ public class DriveStandardNode implements IBehaviorNode {
 
 
     @Override
-    public Status process() {
+    public Status processTick(int s) {
 
         Rotation2d rotation2d = odometryController.estimateLastRotation();
         SwerveModuleState[] states = DriveConstants.KINEMATICS.toSwerveModuleStates(new ChassisSpeeds(input.getInputX(), input.getInputY(), input.getInputRot()));
@@ -32,6 +32,6 @@ public class DriveStandardNode implements IBehaviorNode {
         }
 
         driveController.doDriveWithStates(states);
-        return Status.COMPLETE;
+        return Status.SUCCESS;
     }
 }

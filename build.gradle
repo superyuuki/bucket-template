@@ -8,7 +8,6 @@ version '1.0-SNAPSHOT'
 
 def wpilibArtifacts = wpi.java.deps.wpilib(); //generates maven artifacts from wpilib
 def vendorArtifacts = wpi.java.vendor.java(); //generates maven artifacts from vendor dep files
-def vendorDepsRepos = wpi.getMaven().collect {it.toString()}
 
 subprojects { //feeds java and wpilib plugin into all subprojects so they can access code
     apply plugin: 'java'
@@ -20,6 +19,7 @@ subprojects { //feeds java and wpilib plugin into all subprojects so they can ac
         maven { url 'https://frcmaven.wpi.edu/artifactory/release' }
         maven { url 'https://frcmaven.wpi.edu/artifactory/vendor-mvn-release' }
         maven { url 'https://maven.photonvision.org/repository/internal' }
+        maven { url 'https://maven.revrobotics.com/' }
         maven { url 'https://jitpack.io' }
         //vendordep cache in case my shitcode fails to work
 /*

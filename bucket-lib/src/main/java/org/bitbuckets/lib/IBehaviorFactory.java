@@ -6,7 +6,6 @@ public interface IBehaviorFactory {
 
     }
 
-    IBehaviorNode produceAutonomousBehavior(Tools tools);
-    IBehaviorNode produceTeleopBehavior(Tools tools);
+    IBehaviorRoutine produceBehavior(Tools tools);
 
 }

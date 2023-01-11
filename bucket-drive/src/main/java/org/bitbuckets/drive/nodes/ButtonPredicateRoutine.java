@@ -1,8 +1,8 @@
 package org.bitbuckets.drive.nodes;
 
-import org.bitbuckets.lib.IBehaviorNode;
+import org.bitbuckets.lib.IBehaviorRoutine;
 
-public class ButtonPredicateNode implements IBehaviorNode {
+public class ButtonPredicateRoutine implements IBehaviorRoutine {
 
     @Override
     public Status process() {
